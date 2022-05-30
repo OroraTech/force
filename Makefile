@@ -23,13 +23,15 @@
 ##########################################################################
 # Modify the following lines to match your needs
 
+ARCH := $(shell uname -m)
+
 # Installation directory
 BINDIR=/usr/local/bin
 
 # Libraries
 GDAL=-I/usr/include/gdal -L/usr/lib -Wl,-rpath=/usr/lib
-GSL=-I/usr/include/gsl -L/usr/lib/x86_64-linux-gnu -Wl,-rpath=/usr/lib/x86_64-linux-gnu -DHAVE_INLINE=1 -DGSL_RANGE_CHECK=0
-CURL=-I/usr/include/curl -L/usr/lib/x86_64-linux-gnu -Wl,-rpath=/usr/lib/x86_64-linux-gnu -I/usr/include/x86_64-linux-gnu/curl -L/usr/lib/x86_64-linux-gnu -Wl,-rpath=/usr/lib/x86_64-linux-gnu
+GSL=-I/usr/include/gsl -L/usr/lib/${ARCH}-linux-gnu -Wl,-rpath=/usr/lib/${ARCH}-linux-gnu -DHAVE_INLINE=1 -DGSL_RANGE_CHECK=0
+CURL=-I/usr/include/curl -L/usr/lib/${ARCH}-linux-gnu -Wl,-rpath=/usr/lib/${ARCH}-linux-gnu -I/usr/include/${ARCH}-linux-gnu/curl -L/usr/lib/${ARCH}-linux-gnu -Wl,-rpath=/usr/lib/${ARCH}-linux-gnu
 OPENCV=-I/usr/local/include/opencv4 -L/usr/local/lib -Wl,-rpath=/usr/local/lib
 PYTHON != python3-config --includes 
 PYTHON2 != python3-config --ldflags
